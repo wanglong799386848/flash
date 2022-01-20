@@ -1,0 +1,28 @@
+{
+  "name": "long-cli",
+  "version": "0.1.13",
+  "description": "闪电快车 命令行工具",
+  "bin": {
+    "long": "lib/bin.js"
+  },
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "clean": "rm -rf lib",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@types/cross-spawn": "^6.0.2",
+    "axios": "~0",
+    "chalk": "^4.0.0",
+    "commander": "^4.1.1",
+    "cross-spawn": "^7.0.3",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^7.2.0",
+    "ora": "^5.3.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "license": "MIT"
+}

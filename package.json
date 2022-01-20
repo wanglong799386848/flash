@@ -1,0 +1,51 @@
+{
+  "name": "flash-cli",
+  "description": "闪电快车 命令行工具",
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "init": "yarn && lerna bootstrap",
+    "eslint": "eslint packages/ --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
+    "stylelint": "stylelint 'packages/**/*.less' --fix --cache",
+    "preRelease": "lerna run clean && lerna run build"
+  },
+  "devDependencies": {
+    "@types/node": "^15.6.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@types/fs-extra": "^9.0.13",
+    "@typescript-eslint/parser": "^3.10.1",
+    "chalk": "^4.0.0",
+    "eslint": "^6.0.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.12.3",
+    "eslint-plugin-typescript": "^0.14.0",
+    "husky": "^4.3.0",
+    "lerna": "^3.21.0",
+    "lint-staged": "^10.2.4",
+    "stylelint": "^13.4.1",
+    "stylelint-config-standard": "^20.0.0",
+    "typescript": "^4.4.3"
+  },
+  "lint-staged": {
+    "packages/**/*.{js,jsx,ts,tsx}": [
+      "npm run eslint",
+      "git add"
+    ],
+    "*.{css, less}": [
+      "npm run stylelint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
